@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
 }
@@ -9,7 +13,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 1s linear;
   }
 }
 
@@ -35,4 +39,130 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+* {
+  font-family: "SF Pro", serif;
+}
+
+
+/*Top-most portion of the screen until next bottom text*/
+.menu-bar {
+  padding-top: 1.3em;
+  padding-left: 3em;
+  padding-bottom: 2em;
+  font-family: 'SF Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: calc(10px + 2vmin);
+  /*border-color: aqua;*/
+  /*border-width: 2px;*/
+}
+
+/*Contains input fields, and graphs*/
+.landing-body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*border-color: aqua;*/
+  /*border-width: 2px;*/
+  flex-direction: column;
+}
+
+/*Contains the input fields and their headings*/
+.input-fields-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /*border-color: blue;*/
+  /*border-width: 2px;*/
+}
+
+/*Styling for each input field*/
+.input-field {
+  display: flex;
+  /*border-color: red;*/
+  /*border-width: 2px;*/
+  flex-direction: column;
+  align-items: center;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+/*Contains buttons beneath input fields*/
+.primary-button-container {
+  margin-top: 2em;
+  /*border-color: green;*/
+  /*border-width: 2px;*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graph-container {
+  /*border-color: red;*/
+  /*border-width: 2px;*/
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.description-graph-container {
+  display: flex;
+  flex-direction: row;
+  /*border-color: #25d8da;*/
+  /*border-width: 2px;*/
+  justify-content: space-evenly;
+}
+
+.graph {
+  position: relative;
+  height: 60vh;
+  width: 60vw;
+  /*border-color: #7c05fb;*/
+  /*border-width: 2px;*/
+}
+
+.description-container {
+  /*border-color: rgba(0, 0, 0, 0.47);*/
+  /*border-width: 5px;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20em;
+  text-align: center;
+  font-size: 20px;
+}
+
+.toggle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 3em;
+}
+
+.bullet-container {
+  /*border-color: #53f62e;*/
+  /*border-width: 2px;*/
+  display: flex;
+  padding: 20px;
+  max-width: 1375px;
+  margin: 20px auto;
+}
+
+.bullet-point {
+  /*border-color: #53f62e;*/
+  /*border-width: 2px;*/
+  display: flex;
+  align-items: center;
+  width: 40%;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.bullet-icon {
+  font-size: 40px;
+  margin-right: 10px;
+  color: #00008a;
 }
