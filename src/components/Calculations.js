@@ -17,7 +17,7 @@ export const normalize = (prices) => {
 export const transformData = (data) => {
     if (!data || !data.data) return { labels: [], data: [] };
 
-    const dates = Object.keys(data.data);
+    const dates = Object.keys(data.data).reverse();
     const prices = dates.map(date => parseFloat(data.data[date]['4. close']));
 
     return { labels: dates, data: prices };
@@ -35,8 +35,8 @@ export const calculateEuclideanDifference = (data1, data2) => {
         return '0.00';
     }
 
-    const dates1 = Object.keys(data1.data);
-    const dates2 = Object.keys(data2.data);
+    const dates1 = Object.keys(data1.data).reverse();
+    const dates2 = Object.keys(data2.data).reverse();
 
     const prices1 = dates1.map(date => parseFloat(data1.data[date]['4. close']));
     const prices2 = dates2.map(date => parseFloat(data2.data[date]['4. close']));
