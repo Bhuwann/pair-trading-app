@@ -1,73 +1,38 @@
+/* Tailwind CSS imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* General App Styles */
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 1s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Global Font Setting */
 * {
   font-family: "SF Pro", serif;
 }
 
-
-/*Top-most portion of the screen until next bottom text*/
+/* Menu Bar Styles */
 .menu-bar {
-  padding-top: 1.3em;
-  padding-left: 3em;
-  padding-bottom: 2em;
+  padding: 1.3em 0 2em 3em;
   font-family: 'SF Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: calc(10px + 2vmin);
   /*border-color: aqua;*/
   /*border-width: 2px;*/
 }
 
-/*Contains input fields, and graphs*/
+/* Main Content Container */
 .landing-body-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   /*border-color: aqua;*/
   /*border-width: 2px;*/
-  flex-direction: column;
 }
 
-/*Contains the input fields and their headings*/
+/* Input Fields Container */
 .input-fields-container {
   display: flex;
   flex-direction: row;
@@ -76,45 +41,47 @@
   /*border-width: 2px;*/
 }
 
-/*Styling for each input field*/
+/* Individual Input Field */
 .input-field {
   display: flex;
-  /*border-color: red;*/
-  /*border-width: 2px;*/
   flex-direction: column;
   align-items: center;
-  margin-left: 4em;
-  margin-right: 4em;
+  margin: 0 4em;
+  /*border-color: red;*/
+  /*border-width: 2px;*/
 }
 
-/*Contains buttons beneath input fields*/
+/* Primary Button Container */
 .primary-button-container {
   margin-top: 2em;
-  /*border-color: green;*/
-  /*border-width: 2px;*/
   width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  /*border-color: green;*/
+  /*border-width: 2px;*/
 }
 
+/* Graph Container */
 .graph-container {
-  /*border-color: red;*/
-  /*border-width: 2px;*/
   display: flex;
   justify-content: center;
   flex-direction: column;
+  /*border-color: red;*/
+  /*border-width: 2px;*/
 }
 
+/* Description and Graph Container */
 .description-graph-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   /*border-color: #25d8da;*/
   /*border-width: 2px;*/
-  justify-content: space-evenly;
 }
 
+/* Graph Styles */
 .graph {
   position: relative;
   height: 60vh;
@@ -123,9 +90,8 @@
   /*border-width: 2px;*/
 }
 
+/* Description Container */
 .description-container {
-  /*border-color: rgba(0, 0, 0, 0.47);*/
-  /*border-width: 5px;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,8 +99,11 @@
   width: 20em;
   text-align: center;
   font-size: 20px;
+  /*border-color: rgba(0, 0, 0, 0.47);*/
+  /*border-width: 5px;*/
 }
 
+/* Toggle Container */
 .toggle-container {
   display: flex;
   flex-direction: row;
@@ -142,25 +111,28 @@
   padding: 3em;
 }
 
+/* Bullet Points Container */
 .bullet-container {
-  /*border-color: #53f62e;*/
-  /*border-width: 2px;*/
   display: flex;
   padding: 20px;
   max-width: 1375px;
   margin: 20px auto;
-}
-
-.bullet-point {
   /*border-color: #53f62e;*/
   /*border-width: 2px;*/
+}
+
+/* Individual Bullet Point */
+.bullet-point {
   display: flex;
   align-items: center;
   width: 40%;
   font-size: 20px;
   padding: 10px;
+  /*border-color: #53f62e;*/
+  /*border-width: 2px;*/
 }
 
+/* Bullet Point Icon */
 .bullet-icon {
   font-size: 40px;
   margin-right: 10px;
