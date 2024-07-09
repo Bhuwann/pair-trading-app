@@ -9,7 +9,7 @@ export const transformData = (data) => {
     if (!data) return { labels: [], data: [] }
 
     // Extract dates as labels, except the first object which holds the ticker
-    let dates = Object.keys(data.data)
+    let dates = Object.keys(data.data).reverse()
     // dates.reverse()
     const prices = dates.map(date => parseFloat(data.data[date]['4. close']))
 
@@ -20,11 +20,9 @@ export const transformData = (data) => {
 }
 
 export const calculateEuclideanDifference = (data1, data2) => {
-    let dates1 = Object.keys(data1.data)
-    let dates2 = Object.keys(data2.data)
+    let dates1 = Object.keys(data1.data).reverse()
+    let dates2 = Object.keys(data2.data).reverse()
 
-    // dates1.reverse()
-    // dates2.reverse()
 
     let prices1 = dates1.map(date => parseFloat(data1.data[date]['4. close']))
     let prices2 = dates2.map(date => parseFloat(data2.data[date]['4. close']))
