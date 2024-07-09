@@ -3,7 +3,7 @@ import '../App.css';
 
 /**
  * MenuBar component displays the application title in the header.
- *
+ * In-app links will be added to the menu bar in the future.
  * @returns {JSX.Element} A div containing the application title.
  */
 const MenuBar = () => (
