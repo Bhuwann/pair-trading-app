@@ -25,4 +25,8 @@ yarn-error.log*
 # tailwind configuration
 tailwind.config.js
 
+# API keys
 .env
+
+# Default Data
+/DefaultData.js
