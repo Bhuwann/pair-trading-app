@@ -1,37 +1,39 @@
 import React, { useState } from 'react';
-// axios is a package that allows us to make HTTP requests to the backend server
 import axios from 'axios';
-// import styles
 import '../App.css';
-// import the StockChart component
-// import temporary default data
 import { aaplData, msftData } from '../DefaultData.js';
 import GraphDescription from './GraphDescription.js';
 import AnimatedBullets from "./AnimatedBullets.js";
 
+/**
+ * Toggle component for showing/hiding content
+ * @returns {JSX.Element} A toggle switch with a label
+ */
 const Toggle = () => {
-    const [isChecked, setIsChecked] = useState(true)
-    const handleClick = () => {
-        setIsChecked(!isChecked);
-    }
-    let display = isChecked ? 'Hide' : 'Show'
+    const [isChecked, setIsChecked] = useState(true);
+    const handleClick = () => setIsChecked(!isChecked);
+    const display = isChecked ? 'Hide' : 'Show';
 
     return (
         <div className='toggle-container'>
             <label className="cursor-pointer label pr-3">
-                <input onChange={handleClick} type="checkbox" className="toggle toggle-primary"
-                       checked={isChecked}/>
+                <input
+                    onChange={handleClick}
+                    type="checkbox"
+                    className="toggle toggle-primary"
+                    checked={isChecked}
+                />
             </label>
-            <div className='toggle-text'>
-                {display}
-            </div>
+            <div className='toggle-text'>{display}</div>
         </div>
-    )
-}
+    );
+};
 
-// StockComparison component fetched and compares stock data for two stock symbols
+/**
+ * StockComparison component for fetching and comparing stock data
+ * @returns {JSX.Element} A form for entering stock symbols and displaying comparison charts
+ */
 const StockComparison = () => {
-    // State variables to hold stock symbols and fetched data for each symbol
     const [symbol1, setSymbol1] = useState('');
     const [symbol2, setSymbol2] = useState('');
     const [data1, setData1] = useState(aaplData);
@@ -39,29 +41,26 @@ const StockComparison = () => {
     const [backtestButtonClicked, setBacktestButtonClicked] = useState(false);
     const [analyzeButtonClicked, setAnalyzeButtonClicked] = useState(false);
 
-    // Function to fetch stock data for a given symbol from the backend server and update state
-    // Params: symbol --> The stock symbol to fetch data for
-    //         setData --> The state setter function to update the state variable
+    /**
+     * Fetches stock data for a given symbol
+     * @param {string} symbol - The stock symbol to fetch data for
+     * @param {function} setData - State setter function to update the stock data
+     */
     const fetchStockData = async (symbol, setData) => {
         try {
-            //  Make an HTTP GET request to the backend endpoint for symbol
-            const response = await axios.get(`http://localhost:5001/api/stocks/${symbol}`)
-            // Extract the 'Time Series (Daily)' data from the response
-            const timeSeries = response.data['Time Series (Daily)']
-
-            // Check if time series data is available
-            if (timeSeries) {
-                setData({ symbol: symbol, data: timeSeries });
-            } else {
-                setData(null)
-            }
+            const response = await axios.get(`http://localhost:5001/api/stocks/${symbol}`);
+            const timeSeries = response.data['Time Series (Daily)'];
+            setData(timeSeries ? { symbol, data: timeSeries } : null);
         } catch (error) {
-            console.error('error fetching stock data', error)
-            setData(null)
+            console.error('Error fetching stock data:', error);
+            setData(null);
             throw error;
         }
-    }
+    };
 
+    /**
+     * Handles the comparison of two stocks
+     */
     const handleCompare = async () => {
         if (symbol1 && symbol2) {
             try {
@@ -82,77 +81,95 @@ const StockComparison = () => {
         console.log('Data2:', data2);
         setAnalyzeButtonClicked(true);
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
+    };
 
+    /**
+     * Handles the backtest button click
+     */
     const handleBacktest = () => {
-        setTimeout(() => setBacktestButtonClicked(true), 0);
+        setBacktestButtonClicked(true);
         setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 500);
-    }
+    };
 
     return (
         <>
             <div className="landing-body-container">
-                <div className={"input-fields-container"}>
-                    <div className="input-field">
-                        <div className="text-4xl font-bold mb-4">Stock 1</div>
-                        <label className="input input-bordered flex items-center gap-2">
-                            Ticker 1:
-                            <input
-                                type="text"
-                                value={symbol1}
-                                onChange={(e) => setSymbol1(e.target.value)}
-                                placeholder="e.g. AAPL"
-                            />
-                        </label>
-                    </div>
-                    <div className="input-field">
-                        <div className="text-4xl font-bold mb-4">Stock 2</div>
-                        <label className="input input-bordered flex items-center gap-2 font-pro">
-                            Ticker 2:
-                            <input
-                                type="text"
-                                value={symbol2}
-                                onChange={(e) => setSymbol2(e.target.value)}
-                                placeholder="e.g. MSFT"
-                            />
-                        </label>
-                    </div>
+                <div className="input-fields-container">
+                    <StockInputField
+                        label="Stock 1"
+                        value={symbol1}
+                        onChange={setSymbol1}
+                        placeholder="e.g. AAPL"
+                    />
+                    <StockInputField
+                        label="Stock 2"
+                        value={symbol2}
+                        onChange={setSymbol2}
+                        placeholder="e.g. MSFT"
+                    />
                 </div>
                 <div className="primary-button-container">
-                    <button className="btn btn-outline w-1/6 text-lg font-pro font-bold"
-                            onClick={handleCompare}>Analyze
+                    <button
+                        className="btn btn-outline w-1/6 text-lg font-pro font-bold"
+                        onClick={handleCompare}
+                    >
+                        Analyze
                     </button>
                 </div>
             </div>
 
             {analyzeButtonClicked && (
-            <>
-                <div className="graph-container">
-                    <GraphDescription data1={data1} data2={data2} chartType='raw'/>
-                    <GraphDescription data1={data1} data2={data2} chartType='normalized'/>
-                    <GraphDescription data1={data1} data2={data2} chartType='spread'/>
-                    <AnimatedBullets/>
-                </div>
+                <>
+                    <div className="graph-container">
+                        <GraphDescription data1={data1} data2={data2} chartType='raw'/>
+                        <GraphDescription data1={data1} data2={data2} chartType='normalized'/>
+                        <GraphDescription data1={data1} data2={data2} chartType='spread'/>
+                        <AnimatedBullets/>
+                    </div>
 
-                <div className="primary-button-container">
-                    <button className="btn btn-outline w-1/6 text-lg font-pro font-bold"
-                            onClick={handleBacktest}>Backtest
-                    </button>
-                    {!backtestButtonClicked && (
-                        <div style={{ paddingBottom: '50px' }}></div>
+                    <div className="primary-button-container">
+                        <button
+                            className="btn btn-outline w-1/6 text-lg font-pro font-bold"
+                            onClick={handleBacktest}
+                        >
+                            Backtest
+                        </button>
+                        {!backtestButtonClicked && <div style={{ paddingBottom: '50px' }}></div>}
+                    </div>
+
+                    {backtestButtonClicked && (
+                        <div className="graph-container">
+                            <GraphDescription data1={data1} data2={data2} chartType='equity'/>
+                        </div>
                     )}
-                </div>
-
-                {backtestButtonClicked && (
-                <div className="graph-container">
-                    <GraphDescription data1={data1} data2={data2} chartType='equity'/>
-                </div>
-                    )
-                }
                 </>
             )}
         </>
-    )
-}
+    );
+};
+
+/**
+ * StockInputField component for entering stock symbols
+ * @param {Object} props - Component props
+ * @param {string} props.label - Label for the input field
+ * @param {string} props.value - Current value of the input field
+ * @param {function} props.onChange - Function to handle input changes
+ * @param {string} props.placeholder - Placeholder text for the input field
+ * @returns {JSX.Element} An input field for entering stock symbols
+ */
+const StockInputField = ({ label, value, onChange, placeholder }) => (
+    <div className="input-field">
+        <div className="text-4xl font-bold mb-4">{label}</div>
+        <label className="input input-bordered flex items-center gap-2 font-pro">
+            {`Ticker ${label.split(' ')[1]}:`}
+            <input
+                type="text"
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder={placeholder}
+            />
+        </label>
+    </div>
+);
 
 export default StockComparison;
