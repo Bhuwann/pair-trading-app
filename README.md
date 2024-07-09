@@ -3,7 +3,9 @@
 ## Overview
 
 This application allows users to compare stock data for pair trading purposes. The backend is built with Node.js and Express, 
-and it fetched stock data from the Alpha Vantage API
+and it fetches stock data from the Alpha Vantage API
+
+![DemoScreenCapture](https://github.com/Bhuwann/pair-trading-app/assets/107561906/e1c09329-d817-4ca0-b1b4-e981baae5f3d)
 
 ## Backend Directory Structure
 
