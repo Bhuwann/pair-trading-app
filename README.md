@@ -13,6 +13,19 @@ accurate financial data.
 - **Trading Strategy Simulation**: Perform backtesting on pair ttrading strategy to assess historical performace.
 - **Interactive Charts**: Visualize stock data and trading signals through interactive charts.
 
+## Tools Used
+
+- **JavaScript** is the standard language for client-side web development and has a rich ecosystem of libraries and  
+frameworks like React and Chart
+- **React** is chosen for its component-based architecture, making the UI modular and maintainable.
+- **Node.js** allows us to use JavaScript to build the server.
+- **Express** simplifies the creation of the backend API.
+- **Axios** is used for its simplicity and ease of making HTTP requests.
+- **Chart.js** offers a powerful and easy-to-use solution for visualizing data with a wide range of chart types.
+- **Alpha Vantage API** provides free stock market data needed for the application.
+- **HTML**
+- **CSS**
+
 ## Components
 
 ### Backend
@@ -20,6 +33,7 @@ accurate financial data.
 - **server.js**: Starts the Express server and listens on a specified port.
 - **stockController.js**: Fetches stock data from the Alpha Vantage API.
 - **stockRoutes.js**: Defines routes for fetching stock data.
+- **Tools**: Node.js, Express.js, 
 
 ### Frontend
 
