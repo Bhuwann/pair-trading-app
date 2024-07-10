@@ -105,3 +105,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Email: [bb623@cornell.edu](mailto:bb623@cornell.edu)
 - Website: [bhuwanbhattarai.com](https://bhuwanbhattarai.com/)
 - LinkedIn: [linkedin.com/in/bhuwan-bhattarai](https://www.linkedin.com/in/bhuwan-bhattarai/)
+
+## Demo
+
+(Ignore black bars)
+
+![Demo Screen Shot](Demo.png)
