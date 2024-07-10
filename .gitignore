@@ -30,3 +30,6 @@ tailwind.config.js
 
 # Default Data
 /DefaultData.js
+
+# Screen Capture
+/DemoScreenCapture.png
