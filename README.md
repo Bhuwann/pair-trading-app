@@ -4,7 +4,7 @@
 
 The Pair Trading App is a tool designed for financial analysis and backtesting of pair trading strategies. This
 application allows users to compare stock data, analyze price series, and simulate a pair trading strategy to evaluate
-its profitability on any given pair of stocks. The app utilizes data from the Alhpa Vantage API to provide detailed and
+its profitability on any given pair of stocks. The app utilizes data from the Alpha Vantage API to provide detailed and
 accurate financial data. 
 
 ## Features 
